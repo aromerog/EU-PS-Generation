@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<STYLE type='text/css'>
+H2 {font-weight:normal; }
+INPUT {color:navy; }
+BODY {background-color:#EEEEDD; }
+TABLE TR TD {vertical-align:top; font-size:8pt}
+TEXTAREA {font-family:'Menlo'; color:navy;}
+.help {color:#009999;}
+.translation {color:#009933;}
+
+.folder { background-color:#cc9966; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.composition { background-color:#0088DD; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.cluster { background-color:#667399; color:#FFFFFF; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.element { background-color:#CCCCBB; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px; }
+.extract { background-color:#000000; color:#FFFFFF; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px; }
+.section { background-color:#ffcc00; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.entry { background-color:#00ffcc; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.knowledge { background-color:#6600cc; color:#FFFFFF; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.decision { background-color:#ff9999; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.binding { background-color:#ffff00; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.resource { background-color:#cce6ff; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.mapping { background-color:#ccff33; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+.link { background-color: #00ffff; border:dotted 1px gray; padding-left:4pt; padding-right:4pt; border-radius: 2px;}
+
+</STYLE>
+<SCRIPT type='text/javascript'>
+function generateExtract () {
+	// Convierte JSON a Objeto JavaScript y lo presenta como HTML
+	var myJSON = document.getElementById("extractData").value;
+	var myObj = JSON.parse(myJSON);
+	var myElement = "";
+	// alert(myObj);
+	myElement += myObj.label + " | " + "<span class='translation'>" + myObj.labelTranslation + "</span>" + ": " ; 
+	myElement += myObj.value + " | " + "<span class='translation'>" + myObj.valueTranslation + "</span>";
+	document.getElementById("processedObject").innerHTML = myJSON + myElement;
+	}
+
+function demo () {
+	var inputText = document.getElementById("extractData").value;
+	var outputText = inputText;
+	outputText = outputText.replace(/\n/g, "<BR/>");
+	outputText = outputText.replace(/\"element\":/g, "<BR/><span class='element'>ELEMENT</span>");
+	outputText = outputText.replace(/\"composition\":/g, "<BR/><span class='composition'>COMPOSITION</span>");
+	outputText = outputText.replace(/\"extract\":/g, "<BR/><span class='extract'>EXTRACT</span>");
+	outputText = outputText.replace(/\"section\":/g, "<BR/><span class='section'>SECTION</span>");
+	outputText = outputText.replace(/\"entry\":/g, "<BR/><span class='entry'>ENTRY</span>");
+	outputText = outputText.replace(/\"binding\":/g, "<BR/><span class='binding'>BINDING</span>");
+	outputText = outputText.replace(/\"folder\":/g, "<BR/><span class='folder'>FOLDER</span>");
+	outputText = outputText.replace(/\"cluster\":/g, "<BR/><span class='cluster'>CLUSTER</span>");
+	outputText = outputText.replace(/\"decision\":/g, "<BR/><span class='decision'>DECISION</span>");
+	outputText = outputText.replace(/\"resource\":/g, "<BR/><span class='resource'>RESOURCE</span>");
+	outputText = outputText.replace(/\"mapping\":/g, "<BR/><span class='mapping'>MAPPING</span>");
+	outputText = outputText.replace(/\"knowledge\":/g, "<BR/><span class='knowledge'>KNOWLEDGE</span>");
+	outputText = outputText.replace(/\"link\":/g, "<BR/><span class='link'>LINK</span>");
+	
+	outputText = outputText.replace(/\{/g, "");
+	outputText = outputText.replace(/\}/g, "");
+	outputText = "<TABLE>" + "<TR><TD>" + outputText + "</TD></TR>" + "</TABLE>";
+	outputText = outputText + "Fin de la demo";
+	document.getElementById("demo").innerHTML = outputText;
+	return ;
+	}
+
+</SCRIPT>
+</HEAD>
+<BODY style='font-family:Arial; font-size:10pt; '>
+<FORM>
+<H2><BIG><STRONG>EHR Extract</STRONG> Processor</BIG><BR/>
+<SPAN class='help'>Procesador de extractos HCE xml/json a HTML/PDF</SPAN></H2>
+<HR>
+	Enlaces: <A target="browser" 
+	href='http://browser.ihtsdotools.org/?'>
+	SNOMED CT Browser</A> | 
+	<A target="browser" 
+	href='https://www.w3schools.com/colors/colors_picker.asp'>
+	Colors</A>
+<HR>	
+<TEXTAREA id='extractData' title='Inserte el extracto del EU PS ...' rows='40' cols='160'>
+{ 
+"extract":   
+{ 
+"folder": { "name": "Carpeta de UE Resumen de Paciente", "nameTranslation": "EU Patient Summary Folder", "timeStamp": "20181212 23:01:12.12345" } ,
+"composition": { "name": "UE Resumen de Paciente", "nameTranslation": "EU Patient Summary", "timeStamp": "20181212 23:01:12.12345" } ,
+"section": { "name": "Datos de la organización", "nameTranslation": "Organisation data" } ,
+"entry": {} ,
+"section": { "name": "Datos del documento", "nameTranslation": "Document data" } ,
+"entry": {} ,
+"section": { "name": "Datos de identificación del paciente", "nameTranslation": "Patient identification data" } ,
+"entry": {} ,
+"section": { "name": "Datos clínicos", "nameTranslation": "Clinical data" } ,
+"entry": {} ,
+"cluster": {} ,
+"element": {} ,	
+"element": 	
+	{ 
+	"label": "Sexo", 
+	"labelTranslation": "Sex", 
+	"value": "Hombre", 
+	"valueTranslation": "Male" 
+	} ,
+"element":  	
+	{	
+	"label": "Fecha de nacimiento", 
+	"@labelConceptSystem": "SNOMED CT",
+	"@labelConcept:": "184099003 |fecha de nacimiento (entidad observable)|", 
+	"@labelReference:": "snomed.info/sct/184099003", 
+	"labelTranslation": "Date of birth", 
+	"value": "31-12-1999", 
+	"valueHelp": "dd-mm-aaaa", 
+	"valueHelpTranslation": "dd-mm-yyyy",
+	"derivedInfo":"Edad = 18 años",
+	"derivedInfoTranslation": "Age = 18 years"
+	} ,
+"binding": {} ,
+"resource": {} ,
+"mapping": {} ,
+"knowledge": {} ,
+"decision": {} ,  
+"link": {}  
+}
+}
+</TEXTAREA>
+
+<HR>
+Operaciones: 
+<INPUT type='button' value='Demo' onclick="demo();">
+<INPUT type='button' value='Procesar' onclick="generateExtract();">
+De: <SELECT><OPTION>json</OPTION><OPTION>xml</OPTION></SELECT>
+A: <SELECT><OPTION>HTML</OPTION><OPTION>PDF</OPTION><OPTION>json</OPTION><OPTION>xml</OPTION></SELECT>
+<INPUT type='reset' value='Reiniciar'>
+<HR>
+Demo: <DIV id='demo'>...</DIV>
+<HR>
+Documento procesado: <DIV id='processedObject'>...</DIV>
+<HR>
+</FORM>
+Fin de la página.
+</BODY>
+</HTML>
