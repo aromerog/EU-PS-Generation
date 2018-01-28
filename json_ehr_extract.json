@@ -1,0 +1,43 @@
+{ 
+"extract":   
+{ 
+"folder": { "name": "Carpeta de UE Resumen de Paciente", "nameTranslation": "EU Patient Summary Folder", "timeStamp": "20181212 23:01:12.12345" } ,
+"composition": { "name": "UE Resumen de Paciente", "nameTranslation": "EU Patient Summary", "timeStamp": "20181212 23:01:12.12345" } ,
+"section": { "name": "Datos de la organización", "nameTranslation": "Organisation data" } ,
+"entry": {} ,
+"section": { "name": "Datos del documento", "nameTranslation": "Document data" } ,
+"entry": {} ,
+"section": { "name": "Datos de identificación del paciente", "nameTranslation": "Patient identification data" } ,
+"entry": {} ,
+"section": { "name": "Datos clínicos", "nameTranslation": "Clinical data" } ,
+"entry": {} ,
+"cluster": {} ,
+"element": {} ,	
+"element": 	
+	{ 
+	"label": "Sexo", 
+	"labelTranslation": "Sex", 
+	"value": "Hombre", 
+	"valueTranslation": "Male" 
+	} ,
+"element":  	
+	{	
+	"label": "Fecha de nacimiento", 
+	"@labelConceptSystem": "SNOMED CT",
+	"@labelConcept:": "184099003 |fecha de nacimiento (entidad observable)|", 
+	"@labelReference:": "snomed.info/sct/184099003", 
+	"labelTranslation": "Date of birth", 
+	"value": "31-12-1999", 
+	"valueHelp": "dd-mm-aaaa", 
+	"valueHelpTranslation": "dd-mm-yyyy",
+	"derivedInfo":"Edad = 18 años",
+	"derivedInfoTranslation": "Age = 18 years"
+	} ,
+"binding": {} ,
+"resource": {} ,
+"mapping": {} ,
+"knowledge": {} ,
+"decision": {} ,  
+"link": {}  
+}
+}
